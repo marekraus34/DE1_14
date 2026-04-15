@@ -319,11 +319,7 @@ end architecture Behavioral;
 *Obr. 1: Behaviorální simulace modulu pdm_filter. Signál pcm_data postupně nabývá hodnot:
 0x00 (ticho), 0x20 (střední hlasitost), 0x3E (hlasitý zvuk) a 0x11 po změně okna na 32 vzorků.*
 
-```
 
-zde bude simulace by peter
-
----
 
 ### peak_hold
 
