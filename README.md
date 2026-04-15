@@ -79,9 +79,16 @@ Cílem projektu je zobrazení intenzity zvukového signálu v reálném čase po
 		|	    | BTND |------------------------------------------>| debounce |			            |
       	|     	+------+				                           +----------+			            |
       	+-------------------------------------------------------------------------------------------+
-
-CLK a RST
 ```
+- CLK (hodinový signál) a RST (reset) vstupují do celého systému
+- pdm_driver generuje hodinový signál pro mikrofon (MIC_CLK), čte datový signál z mikrofonu (MIC_DATA) a vytváří signály pdm_data (hustota jedniček) a pdm_valid (0/1), které posílá do pdm_filter
+- převádí pdm_data (hustotu jedniček) na pcm_data (číselnou hodnotu), přičemž přičemž používá parametr window pro nastavení citlivosti
+- peak_hold zpracovává hodnotu signálu pcm_data (číselnou hodnotu) a podle toho jestli je v aktivním režimu (drží maximální úroveň signálu) nebo neaktivním režimu (LED ukazují aktuální úroveň signálu)
+- led_bar zobrazuje úroveň signálu pomocí LED na výstupu LED[15:0]
+- debounce filtruje vstupy tlačítek a zamezuje zákmitům
+- BTNL a BTNR vstupují přes debounce do sensitivity_ctrl (kontrola sensitivity), nastavují velikost okna (window) a díky tomu mění citlivost mikrofonu
+- BTNU vstupuje přes debounce do peak_hold a přemíná režim mezi 0 (vypnuto) a zapnuto (1)
+- BTND vstupuje přes debounce také do peak_hold a slouží jako reset držené maximální hodnoty
 
 ### Popis modulů
 
