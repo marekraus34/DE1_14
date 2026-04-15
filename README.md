@@ -79,6 +79,8 @@ Cílem projektu je zobrazení intenzity zvukového signálu v reálném čase po
 		|	    | BTND |------------------------------------------>| debounce |			            |
       	|     	+------+				                           +----------+			            |
       	+-------------------------------------------------------------------------------------------+
+
+CLK a RST
 ```
 
 ### Popis modulů
