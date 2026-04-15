@@ -176,7 +176,149 @@ zde bude pdm_driver i s vhdl kodem aji porty tam vlozi hanz
 ---
 
 ---
-zde bude sensitivity_ctrl a pdm_filter by peter
+### sensitivity_ctrl
+
+Nastavuje velikost okna filtru. BTNR zvyšuje citlivost (menší okno), BTNL ji snižuje (větší okno). 5 kroků po 32, rozsah 32–224.
+
+#### Porty
+
+| Port | Směr | Typ | Popis |
+|---|---|---|---|
+| `clk` | in | std_logic | Hlavní hodiny |
+| `rst` | in | std_logic | Synchronní reset |
+| `btn_up_i` | in | std_logic | BTNR – zvýšení citlivosti |
+| `btn_dn_i` | in | std_logic | BTNL – snížení citlivosti |
+| `window_o` | out | std_logic_vector(7 downto 0) | Velikost okna (32–224) |
+
+#### VHDL kód
+
+```vhdl
+library ieee;
+  use ieee.std_logic_1164.all;
+  use ieee.numeric_std.all;
+
+entity sensitivity_ctrl is
+    port (
+        clk      : in  std_logic;
+        rst      : in  std_logic;
+        btn_up_i : in  std_logic;
+        btn_dn_i : in  std_logic;
+        window_o : out std_logic_vector(7 downto 0)
+    );
+end entity sensitivity_ctrl;
+
+architecture Behavioral of sensitivity_ctrl is
+
+    signal sig_window : unsigned(7 downto 0) := to_unsigned(128, 8);
+
+begin
+
+    p_sensitivity : process (clk) is
+    begin
+        if rising_edge(clk) then
+            if rst = '1' then
+                sig_window <= to_unsigned(128, 8);
+            else
+                if btn_up_i = '1' and sig_window > 32 then
+                    sig_window <= sig_window - 32;
+                elsif btn_dn_i = '1' and sig_window < 224 then
+                    sig_window <= sig_window + 32;
+                end if;
+            end if;
+        end if;
+    end process p_sensitivity;
+
+    window_o <= std_logic_vector(sig_window);
+
+end architecture Behavioral;
+```
+
+---
+
+### pdm_filter
+
+Akumulátor počítá jedničky za okno N PDM bitů. Velikost okna určuje `sensitivity_ctrl`. Výsledek odpovídá amplitudě signálu.
+
+#### Porty
+
+| Port | Směr | Typ | Popis |
+|---|---|---|---|
+| `clk` | in | std_logic | Hlavní hodiny |
+| `rst` | in | std_logic | Synchronní reset |
+| `window_i` | in | std_logic_vector(7 downto 0) | Velikost okna ze sensitivity_ctrl |
+| `pdm_data_i` | in | std_logic | PDM bit z driveru |
+| `pdm_valid_i` | in | std_logic | Platný PDM bit |
+| `pcm_data_o` | out | std_logic_vector(7 downto 0) | Amplituda 0–255 |
+| `pcm_valid_o` | out | std_logic | Nová platná hodnota |
+
+#### VHDL kód
+
+```vhdl
+library ieee;
+  use ieee.std_logic_1164.all;
+  use ieee.numeric_std.all;
+
+entity pdm_filter is
+    port (
+        clk         : in  std_logic;
+        rst         : in  std_logic;
+        window_i    : in  std_logic_vector(7 downto 0);
+        pdm_data_i  : in  std_logic;
+        pdm_valid_i : in  std_logic;
+        pcm_data_o  : out std_logic_vector(7 downto 0);
+        pcm_valid_o : out std_logic
+    );
+end entity pdm_filter;
+
+architecture Behavioral of pdm_filter is
+
+    signal sig_acc : unsigned(7 downto 0) := (others => '0');
+    signal sig_cnt : unsigned(7 downto 0) := (others => '0');
+
+begin
+
+    p_filter : process (clk) is
+    begin
+        if rising_edge(clk) then
+            if rst = '1' then
+                sig_acc     <= (others => '0');
+                sig_cnt     <= (others => '0');
+                pcm_data_o  <= (others => '0');
+                pcm_valid_o <= '0';
+            else
+                pcm_valid_o <= '0';
+
+                if pdm_valid_i = '1' then
+                    if sig_cnt >= unsigned(window_i) - 1 then
+                        pcm_data_o  <= std_logic_vector(sig_acc);
+                        pcm_valid_o <= '1';
+                        sig_cnt     <= (others => '0');
+                        if pdm_data_i = '1' then
+                            sig_acc <= to_unsigned(1, 8);
+                        else
+                            sig_acc <= (others => '0');
+                        end if;
+                    else
+                        if pdm_data_i = '1' then
+                            sig_acc <= sig_acc + 1;
+                        end if;
+                        sig_cnt <= sig_cnt + 1;
+                    end if;
+                end if;
+            end if;
+        end if;
+    end process p_filter;
+
+end architecture Behavioral;
+```
+
+#### Simulace (tb_pdm_filter)
+
+<img width="1482" height="830" alt="image" src="https://github.com/user-attachments/assets/0e6ff2f1-5520-4856-bd2f-f80278f6f72d" />
+
+*Obr. 1: Behaviorální simulace modulu pdm_filter. Signál pcm_data postupně nabývá hodnot:
+0x00 (ticho), 0x20 (střední hlasitost), 0x3E (hlasitý zvuk) a 0x11 po změně okna na 32 vzorků.*
+
 ```
 
 zde bude simulace by peter
