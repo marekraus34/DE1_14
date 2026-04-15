@@ -206,10 +206,82 @@ end architecture Behavioral;
 ```
 
 ---
+### pdm_driver
 
----
-zde bude pdm_driver i s vhdl kodem aji porty tam vlozi hanz
----
+Generuje hodinový signál pro mikrofon a synchronně s ním vzorkuje jeho 1 bitový PDM výstup, přičemž označuje každý nový platný vzorek signálem pdm_valid.
+
+### Porty
+| Port | Směr | Typ | Popis |
+|---|---|---|---|
+| `clk` | in   | std_logic | Hlavní hodinový signál 100 MHz |
+| `rst` | in   | std_logic | Synchronní reset, active high |
+| `mic_clk_o` | out | std_logic | Hodinový signál pro mikrofon |
+| `mic_lr_sel_o` | out | std_logic | Výběr kanálu mikrofonu (0 = levý) |
+| `mic_data_i` | in | std_logic | Datový vstup z mikrofonu (PDM) |
+| `pdm_data_o` | out | std_logic | Vzorkovaný PDM bit |
+| `pdm_valid_o` | out | std_logic | Platnost vzorku (1 takt = nový vzorek) |
+
+#### VHDL kód
+
+```vhdl
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity pdm_driver is
+    generic (
+        G_CLK_DIV : positive := 32
+    );
+    port (
+        clk          : in  std_logic;
+        rst          : in  std_logic;
+        mic_clk_o    : out std_logic;
+        mic_lr_sel_o : out std_logic;
+        mic_data_i   : in  std_logic;
+        pdm_data_o   : out std_logic;
+        pdm_valid_o  : out std_logic
+    );
+end entity pdm_driver;
+
+architecture Behavioral of pdm_driver is
+
+    signal sig_cnt     : integer range 0 to G_CLK_DIV - 1 := 0;
+    signal sig_clk_div : std_logic := '0';
+
+begin
+
+    mic_lr_sel_o <= '0';
+
+    p_clk_div : process (clk) is
+    begin
+        if rising_edge(clk) then
+            if rst = '1' then
+                sig_cnt     <= 0;
+                sig_clk_div <= '0';
+                pdm_data_o  <= '0';
+                pdm_valid_o <= '0';
+            else
+                pdm_valid_o <= '0';
+
+                if sig_cnt = G_CLK_DIV - 1 then
+                    sig_cnt     <= 0;
+                    sig_clk_div <= not sig_clk_div;
+
+                    if sig_clk_div = '0' then
+                        pdm_data_o  <= mic_data_i;
+                        pdm_valid_o <= '1';
+                    end if;
+                else
+                    sig_cnt <= sig_cnt + 1;
+                end if;
+            end if;
+        end if;
+    end process p_clk_div;
+
+    mic_clk_o <= sig_clk_div;
+
+end architecture Behavioral;
+```
 
 ---
 ### sensitivity_ctrl
