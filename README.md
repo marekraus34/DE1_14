@@ -739,7 +739,7 @@ end architecture;
 
 ---
 
-*Bude doplněno – syntéza, testování na HW.*
+### Syntéza a testování HW
 
 ---
 
