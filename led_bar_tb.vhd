@@ -54,20 +54,20 @@ begin
     valid_i <= '0';
     peak_active_i <= '0';
     rst <= '1';
-    wait for 50 ns; -- Reset počas viacerých cyklov hodín
+    wait for 50 ns;
     
     rst <= '0';
     wait for 50 ns;
 
-    -- Test 1: Nízka úroveň (napr. 10)
-    level_i <= x"0A"; -- hexadecimálne 10
+    -- Test 1: Nízka úroveň
+    level_i <= x"0A"; 
     valid_i <= '1';
     wait for 100 ns;
-    valid_i <= '0'; -- Deaktivujeme valid
+    valid_i <= '0'; 
     wait for 100 ns;
 
-    -- Test 2: Vysoká úroveň (napr. 200)
-    level_i <= x"C8"; -- hexadecimálne 200
+    -- Test 2: Vysoká úroveň
+    level_i <= x"C8"; 
     valid_i <= '1';
     wait for 100 ns;
     valid_i <= '0';
