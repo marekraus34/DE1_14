@@ -35,7 +35,7 @@ architecture tb of tb_top_level is
     signal mic_lr_sel_o : std_logic;
     signal led_o        : std_logic_vector (15 downto 0);
 
-    constant TbPeriod : time := 1000 ns; -- ***EDIT*** Put right period here
+    constant TbPeriod : time := 20 ns; -- ***EDIT*** Put right period here
     signal TbClock : std_logic := '0';
     signal TbSimEnded : std_logic := '0';
 
@@ -53,36 +53,39 @@ begin
               mic_lr_sel_o => mic_lr_sel_o,
               led_o        => led_o);
 
-    -- Clock generation
+    -- Generovanie hodín
     TbClock <= not TbClock after TbPeriod/2 when TbSimEnded /= '1' else '0';
-
-    -- ***EDIT*** Check that clk is really your main clock signal
     clk <= TbClock;
-
-    stimuli : process
+    
+   stimuli : process
     begin
-        -- ***EDIT*** Adapt initialization as needed
-        btn_l_i <= '0';
-        btn_r_i <= '0';
-        btn_u_i <= '0';
-        btn_d_i <= '0';
-        mic_data_i <= '0';
-
-        -- Reset generation
-        -- ***EDIT*** Check that rst is really your reset signal
+        -- 1. Inicializácia všetkých vstupov
         rst <= '1';
+        btn_l_i <= '0'; btn_r_i <= '0'; btn_u_i <= '0'; btn_d_i <= '0';
+        mic_data_i <= '0';
         wait for 100 ns;
+        
+        -- 2. Uvoľnenie resetu
         rst <= '0';
         wait for 100 ns;
 
-        -- ***EDIT*** Add stimuli here
-        wait for 100 * TbPeriod;
+        -- 3. Simulácia maximálneho hluku
+        mic_data_i <= '1';
+        
+       
+        wait for 150 us; 
 
-        -- Stop the clock and hence terminate the simulation
+        -- 4. Test tlačidiel (napr. zmena citlivosti)
+        btn_u_i <= '1';
+        wait for 20 us;
+        btn_u_i <= '0';
+
+        wait for 50 us;
+
+        -- Ukončenie simulácie
         TbSimEnded <= '1';
         wait;
     end process;
-
 end tb;
 
 -- Configuration block below is required by some simulators. Usually no need to edit.
