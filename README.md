@@ -206,7 +206,7 @@ end architecture Behavioral;
 ```
 #### Simulace (tb_debounce)
 
-<img width="1482" height="830" alt="image" src="" />
+<img width="1482" height="830" alt="image" src="https://github.com/marekraus34/DE1_14/blob/main/debouncer_tb_sim.png?raw=true" />
 
 *Obr. 4: Behaviorální simulace modulu debounce. Signál btn_i obsahuje 
 zákmity – rychlé krátké pulzy simulující mechanické poskakování tlačítka. 
