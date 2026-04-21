@@ -772,6 +772,17 @@ begin
 
 end architecture;
 ```
+#### Simulace (tb_top_level)
+
+<img width="1482" height="830" alt="image" src="https://github.com/marekraus34/DE1_14/blob/main/top_level_tb.png?raw=true" />
+
+*Obr. 5: Behaviorální simulace modulu top_level. Po resetu (rst = '1' 
+do ~100 ns) se systém inicializuje – window_o = 0x80 (střední citlivost), 
+pcm_data = 0x00, level = 0x00, led_o = 0x0000. Od ~200 ns je přiveden 
+mic_data_i = '1' (simulace hlasitého zvuku) a mic_clk_o začne generovat 
+hodinový signál pro mikrofon. Signál mic_lr_sel_o = '0' potvrzuje 
+výběr levého kanálu. Simulace ověřuje správné propojení všech modulů 
+v top_level entitě.*
 
 ---
 
