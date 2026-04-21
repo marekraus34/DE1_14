@@ -349,7 +349,14 @@ begin
 
 end architecture Behavioral;
 ```
+#### Simulace (tb_sensitivity_ctrl)
 
+<img width="1482" height="830" alt="image" src="" />
+
+*Obr. 3: Behaviorální simulace modulu sensitivity_ctrl. Po resetu je 
+výchozí hodnota okna window_o = 0x80 (128, střední citlivost). 
+Po stisku btn_up_i (BTNR) se okno zmenší na 0x60 (96, vyšší citlivost). 
+Po stisku btn_dn_i (BTNL) se okno vrátí zpět na 0x80 (128).*
 ---
 
 ### pdm_filter
