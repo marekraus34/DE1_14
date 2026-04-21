@@ -208,7 +208,7 @@ end architecture Behavioral;
 
 <img width="1482" height="830" alt="image" src="https://github.com/marekraus34/DE1_14/blob/main/debouncer_tb_sim.png?raw=true" />
 
-*Obr. 4: Behaviorální simulace modulu debounce. Signál btn_i obsahuje 
+*Obr. 1: Behaviorální simulace modulu debounce. Signál btn_i obsahuje 
 zákmity – rychlé krátké pulzy simulující mechanické poskakování tlačítka. 
 Modul tyto zákmity filtruje a na výstupu btn_o propustí jediný čistý 
 pulz až poté, co je vstup stabilní po dobu 4 vzorkovacích period. 
@@ -451,7 +451,7 @@ end architecture Behavioral;
 
 <img width="1482" height="830" alt="image" src="https://github.com/user-attachments/assets/0e6ff2f1-5520-4856-bd2f-f80278f6f72d" />
 
-*Obr. 1: Behaviorální simulace modulu pdm_filter. Signál pcm_data postupně nabývá hodnot:
+*Obr. 4: Behaviorální simulace modulu pdm_filter. Signál pcm_data postupně nabývá hodnot:
 0x00 (ticho), 0x20 (střední hlasitost), 0x3E (hlasitý zvuk) a 0x11 po změně okna na 32 vzorků.*
 
 
@@ -616,7 +616,7 @@ end architecture Behavioral;
 
 <img width="1482" height="830" alt="image" src="https://github.com/marekraus34/DE1_14/blob/main/led_bar_tb_sim.png?raw=true" />
 
-*Obr. 2: Behaviorální simulace modulu led_bar. 
+*Obr. 5: Behaviorální simulace modulu led_bar. 
 Signál level_i postupně nabývá hodnot 0x00 (ticho → led_o = 0x0000), 
 0x0A (nízká úroveň → led_o = 0x0000, pod prahem) a 0xC8 
 (vysoká úroveň → led_o = 0x0FFF, rozsvíceno 12 LED). 
