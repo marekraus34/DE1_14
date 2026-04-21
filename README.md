@@ -351,7 +351,7 @@ end architecture Behavioral;
 ```
 #### Simulace (tb_sensitivity_ctrl)
 
-<img width="1482" height="830" alt="image" src="" />
+<img width="1482" height="830" alt="image" src="https://github.com/marekraus34/DE1_14/blob/main/sens_ctrl_tb_sim.png?raw=true" />
 
 *Obr. 3: Behaviorální simulace modulu sensitivity_ctrl. Po resetu je 
 výchozí hodnota okna window_o = 0x80 (128, střední citlivost). 
