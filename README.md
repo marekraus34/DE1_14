@@ -204,6 +204,16 @@ begin
 
 end architecture Behavioral;
 ```
+#### Simulace (tb_debounce)
+
+<img width="1482" height="830" alt="image" src="" />
+
+*Obr. 4: Behaviorální simulace modulu debounce. Signál btn_i obsahuje 
+zákmity – rychlé krátké pulzy simulující mechanické poskakování tlačítka. 
+Modul tyto zákmity filtruje a na výstupu btn_o propustí jediný čistý 
+pulz až poté, co je vstup stabilní po dobu 4 vzorkovacích period. 
+Zákmity uprostřed průběhu (kolem 300–500 ns) jsou potlačeny, 
+výstup btn_o reaguje až na stabilní stisk kolem 700 ns.*
 
 ---
 ### pdm_driver
