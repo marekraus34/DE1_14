@@ -536,8 +536,6 @@ end architecture Behavioral;
 
 ### led_bar
 
-### led_bar
-
 Převede amplitudu (0–255) na počet rozsvícených LED (0–16). 
 V normálním režimu LED okamžitě vyskočí na aktuální úroveň 
 a poté pomalu klesají (decay efekt). Při aktivním Peak Hold 
