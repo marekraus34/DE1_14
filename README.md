@@ -587,7 +587,7 @@ end architecture Behavioral;
 ```
 #### Simulace (tb_led_bar)
 
-<img width="1482" height="830" alt="image" src="" />
+<img width="1482" height="830" alt="image" src="https://github.com/marekraus34/DE1_14/blob/main/led_bar_tb_sim.png?raw=true" />
 
 *Obr. 2: Behaviorální simulace modulu led_bar. 
 Signál level_i postupně nabývá hodnot 0x00 (ticho → led_o = 0x0000), 
