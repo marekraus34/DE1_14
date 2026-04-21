@@ -357,6 +357,7 @@ end architecture Behavioral;
 výchozí hodnota okna window_o = 0x80 (128, střední citlivost). 
 Po stisku btn_up_i (BTNR) se okno zmenší na 0x60 (96, vyšší citlivost). 
 Po stisku btn_dn_i (BTNL) se okno vrátí zpět na 0x80 (128).*
+
 ---
 
 ### pdm_filter
