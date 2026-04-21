@@ -585,6 +585,15 @@ begin
 
 end architecture Behavioral;
 ```
+#### Simulace (tb_led_bar)
+
+<img width="1482" height="830" alt="image" src="" />
+
+*Obr. 2: Behaviorální simulace modulu led_bar. 
+Signál level_i postupně nabývá hodnot 0x00 (ticho → led_o = 0x0000), 
+0x0A (nízká úroveň → led_o = 0x0000, pod prahem) a 0xC8 
+(vysoká úroveň → led_o = 0x0FFF, rozsvíceno 12 LED). 
+Signál valid_i pulzuje při každé nové platné hodnotě amplitudy.*
 
 ---
 
