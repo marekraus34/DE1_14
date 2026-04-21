@@ -786,9 +786,23 @@ v top_level entitě.*
 
 ---
 
-### Syntéza a testování HW
+### Testování na hardware (Nexys A7-50T)
 
----
+#### Syntéza
+- Syntéza proběhla bez chyb
+- Implementace proběhla bez chyb
+- Bitstream byl úspěšně nahrán do desky
+
+#### Funkční testy na desce
+
+| Test | Popis | Výsledek |
+|---|---|---|
+| Základní VU metr | Mluvení do mikrofonu rozsvítí LED | ✅ |
+| BTNL/BTNR | Změna citlivosti mikrofonu | ✅ |
+| BTNU | Zapnutí/vypnutí Peak Hold | ✅ |
+| BTND | Reset peak hodnoty | ✅ |
+| BTNC | Reset celého systému | ✅ |
+| Decay efekt | LED pomalu klesají po odeznění zvuku | ✅ |
 
 ## Lab 4: Tuning
 
