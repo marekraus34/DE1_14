@@ -282,6 +282,15 @@ begin
 
 end architecture Behavioral;
 ```
+#### Simulace (tb_pdm_driver)
+
+<img width="1482" height="830" alt="image" src="[https://github.com/user-attachments/assets/0e6ff2f1-5520-4856-bd2f-f80278f6f72d](https://github.com/marekraus34/DE1_14/blob/main/pdm_driver_tb_sim.png?raw=true)" />
+
+*Obr. 2: Behaviorální simulace modulu pdm_driver. Po resetu začne 
+mic_clk_o generovat hodinový signál pro mikrofon (100 MHz / 32 = 3.125 MHz). 
+Signál pdm_valid_o pulzuje vždy na náběžné hraně mic_clk_o a indikuje 
+nový platný PDM vzorek. Signál pdm_data_o kopíruje hodnotu mic_data_i 
+v okamžiku vzorkování.*
 
 ---
 ### sensitivity_ctrl
