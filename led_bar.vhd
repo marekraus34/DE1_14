@@ -1,16 +1,3 @@
--------------------------------------------------
---! @brief LED bar display (VU meter) with decay
---! @version 1.3
---!
---! Normal mode (peak hold inactive):
---!   - LEDs jump up to current amplitude instantly
---!   - Then slowly fall down (decay effect)
---!   - Decay speed controlled by C_DECAY_TIME
---!
---! Peak hold mode (BTNU active):
---!   - Holds maximum level, no decay
---!   - Top LED blinks ~6 Hz as indication
--------------------------------------------------
 library ieee;
   use ieee.std_logic_1164.all;
   use ieee.numeric_std.all;
@@ -100,11 +87,9 @@ begin
                     end if;
 
                 else
-                    -- Peak hold active: freeze displayed level, no decay
+                 -- Peak hold active: zobrazuj přímo hodnotu z peak_hold
                     if valid_i = '1' then
-                        if sig_level > sig_disp_level then
-                            sig_disp_level <= sig_level;
-                        end if;
+                        sig_disp_level <= sig_level;
                     end if;
                     sig_decay_cnt <= 0;
                 end if;
