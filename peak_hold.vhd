@@ -50,7 +50,7 @@ begin
 
                 -- BTND: manually reset peak to current value
                 if btn_reset_i = '1' then
-                    sig_peak_val <= unsigned(level_i);
+                    sig_peak_val <= (others => '0');
                 end if;
 
                 -- Update peak if new value is higher
