@@ -40,10 +40,10 @@ begin
                 sig_window <= to_unsigned(128, 8);  -- Default: medium sensitivity
             else
                 -- BTNR: increase sensitivity = smaller window
-                if btn_up_i = '1' and sig_window > 32 then
+                if btn_dn_i = '1' and sig_window > 32 then
                     sig_window <= sig_window - 32;
                 -- BTNL: decrease sensitivity = larger window
-                elsif btn_dn_i = '1' and sig_window < 224 then
+                elsif btn_up_i = '1' and sig_window < 224 then
                     sig_window <= sig_window + 32;
                 end if;
             end if;
