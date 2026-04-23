@@ -124,6 +124,7 @@ begin
             rst           => rst,
             btn_mode_i    => btn_u,
             btn_reset_i   => btn_d,
+            btn_dn_i      => btn_l,
             level_i       => pcm_data,
             valid_i       => pcm_valid,
             level_o       => level,
