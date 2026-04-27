@@ -1,10 +1,9 @@
 -------------------------------------------------
---! @brief Button debouncer (single-cycle pulse output)
+--! @brief Debounce module
 --! @version 1.0
---!
---! Samples input every G_MAX clock cycles using a
---! shift register. Outputs a single-cycle pulse on
---! rising edge of debounced signal.
+--! @author Marek Raus
+--! @date 2026
+--! @copyright MIT license
 -------------------------------------------------
 library ieee;
   use ieee.std_logic_1164.all;
