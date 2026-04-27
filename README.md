@@ -393,5 +393,5 @@ v top_level entitě.*
 - [Nexys A7 Reference Manual](https://digilent.com/reference/programmable-logic/nexys-a7/reference-manual)
 - [PDM Microphone Datasheet – SPH0641LU4H-1](https://www.knowles.com/docs/default-source/default-document-library/sph0641lu4h-1-datasheet.pdf)
 - [tomas-fryza/vhdl-examples](https://github.com/tomas-fryza/vhdl-examples)
-- Vivado 2025.2
-- [draw.io](https://draw.io) – blokové schéma
+- [Vivado 2025.2](https://www.amd.com/en/products/software/adaptive-socs-and-fpgas/vivado.html)
+
