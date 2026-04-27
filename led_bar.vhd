@@ -1,3 +1,10 @@
+-------------------------------------------------
+--! @brief Debounce module
+--! @version 1.0
+--! @author Marek Raus
+--! @date 2026
+--! @copyright MIT license
+-------------------------------------------------
 library ieee;
   use ieee.std_logic_1164.all;
   use ieee.numeric_std.all;
