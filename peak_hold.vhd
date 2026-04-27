@@ -1,15 +1,9 @@
 -------------------------------------------------
---! @brief Peak hold module
+--! @brief Debounce module
 --! @version 1.0
---!
---! Holds the maximum amplitude value seen since
---! last reset. Mode toggled by BTNU, peak value
---! manually reset by BTND.
---!
---! When peak_active_o = '1', level_o outputs the
---! held peak value instead of live amplitude.
---! When peak_active_o = '0', level_o passes through
---! the live amplitude unchanged.
+--! @author Marek Raus
+--! @date 2026
+--! @copyright MIT license
 -------------------------------------------------
 library ieee;
   use ieee.std_logic_1164.all;
