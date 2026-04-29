@@ -369,9 +369,30 @@ v top_level entitě.*
 
 ## Lab 4: Tuning
 
-*Bude doplněno – ladění, optimalizace.*
+## Lab 4: Tuning
 
----
+V rámci ladění byly provedeny následující úpravy pro zlepšení funkčnosti systému:
+
+### Zobrazení LED zleva doprava
+
+Původně LED svítily zprava doleva. Upravili jsme `led_bar.vhd` tak aby LED 
+svítily zleva doprava — LED[0] je nejlevější a reaguje první, LED[15] je 
+nejpravější a rozsvítí se při maximální hlasitosti. Toto odpovídá standardnímu 
+chování VU metru.
+
+### Oprava BTND (reset peak hold)
+
+Původní implementace BTND nastavovala peak hodnotu na aktuální úroveň místo 
+na nulu — vizuálně bylo těžké poznat že reset proběhl. Upravili jsme `peak_hold.vhd` 
+tak aby BTND vynuloval peak hodnotu a peak hold zůstal aktivní. LED okamžitě 
+spadnou na nulu a začnou znovu sledovat nové maximum.
+
+### Okamžitá aktualizace citlivosti bez resetu
+
+Původně bylo nutné po změně citlivosti (BTNL/BTNR) zmáčknout reset aby se 
+změna projevila. Opravili jsme propojení `sensitivity_ctrl` a `pdm_filter` 
+v `top_level.vhd` tak aby se nová velikost okna aplikovala okamžitě při 
+dalším PDM vzorku — bez nutnosti mačkat BTNC.
 
 ## Lab 5: Defense
 
