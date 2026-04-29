@@ -369,8 +369,6 @@ v top_level entitě.*
 
 ## Lab 4: Tuning
 
-## Lab 4: Tuning
-
 V rámci ladění byly provedeny následující úpravy pro zlepšení funkčnosti systému:
 
 ### Zobrazení LED zleva doprava
