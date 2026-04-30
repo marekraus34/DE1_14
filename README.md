@@ -373,9 +373,9 @@ V rámci ladění byly provedeny následující úpravy pro zlepšení funkčnos
 
 ### Zobrazení LED zleva doprava
 
-Původně LED svítily zprava doleva. Upravili jsme `led_bar.vhd` tak aby LED 
-svítily zleva doprava — LED[0] je nejlevější a reaguje první, LED[15] je 
-nejpravější a rozsvítí se při maximální hlasitosti. Toto odpovídá standardnímu 
+Původně LED svítily zprava doleva. Upravili jsme `Nexys_A7-50T-Master.xdc` tak aby LED 
+svítily zleva doprava — LED[0] je nejvíce vlevo a reaguje první, LED[15] je 
+vpravo a rozsvítí se při maximální hlasitosti. Toto odpovídá standardnímu 
 chování VU metru.
 
 ### Oprava BTND (reset peak hold)
