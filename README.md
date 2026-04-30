@@ -387,10 +387,9 @@ spadnou na nulu a začnou znovu sledovat nové maximum.
 
 ### Okamžitá aktualizace citlivosti bez resetu
 
-Původně bylo nutné po změně citlivosti (BTNL/BTNR) zmáčknout reset aby se 
-změna projevila. Opravili jsme propojení `sensitivity_ctrl` a `pdm_filter` 
-v `top_level.vhd` tak aby se nová velikost okna aplikovala okamžitě při 
-dalším PDM vzorku — bez nutnosti mačkat BTNC.
+Původně bylo nutné po snížení citlivosti pomocí tlačítka BTNL při aktivním peak_hold
+zmáčknout také tlačítko BTND pro reset a nastavení peak hodnoty na nulu, což nebylo
+uživatelsky přívětivé. 
 
 ## Lab 5: Defense
 
