@@ -388,8 +388,10 @@ spadnou na nulu a začnou znovu sledovat nové maximum.
 ### Okamžitá aktualizace citlivosti bez resetu
 
 Původně bylo nutné po snížení citlivosti pomocí tlačítka BTNL při aktivním peak_hold
-zmáčknout také tlačítko BTND pro reset a nastavení peak hodnoty na nulu, což nebylo
-uživatelsky přívětivé. 
+zmáčknout také tlačítko BTND pro reset a nastavení peak hodnoty na nulu, protože LED
+si držely stále aktuální peak hodnotu, což nebylo uživatelsky přívětivé. Upravili jsme
+soubor 'top_level.vhd' a 'peak_hold.vhd' tak, aby se při znižování sensitivity rovnou
+resetovala i peak hodnota a projevila se na LED.
 
 ## Lab 5: Defense
 
