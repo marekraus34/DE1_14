@@ -400,10 +400,10 @@ dalším PDM vzorku — bez nutnosti mačkat BTNC.
 
 | Resource | Used | Available | Utilization |
 |---|---|---|---|
-| LUT | – | 20800 | – |
-| FF | – | 41600 | – |
-| BRAM | – | 50 | – |
-| IO | – | 210 | – |
+| LUT | 117 | 32600 | 0.36 |
+| FF | 227 | 65200 | 0.35 |
+| BRAM | 0 | 75 | 0 |
+| IO | 25 | 210 | 11.90 |
 
 ---
 
