@@ -394,7 +394,6 @@ dalším PDM vzorku — bez nutnosti mačkat BTNC.
 
 ## Lab 5: Defense
 
-*Bude doplněno – video, poster.*
 
 ### Resource Report (po syntéze)
 
