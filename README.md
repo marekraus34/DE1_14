@@ -405,8 +405,10 @@ dalším PDM vzorku — bez nutnosti mačkat BTNC.
 | BRAM | 0 | 75 | 0 |
 | IO | 25 | 210 | 11.90 |
 
+### Odkaz na video
 [video](https://vutbr-my.sharepoint.com/:v:/g/personal/262725_vutbr_cz/IQAy4LJd8YUuS7vpXyxeKpHGAYxXahwq3z5qYVOWZC4B2e8?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=F2HpED)
 
+### Odkaz na poster
 [poster](de_projekt_poster.jpg)
 
 ---
