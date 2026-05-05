@@ -407,7 +407,8 @@ dalším PDM vzorku — bez nutnosti mačkat BTNC.
 
 [video](https://vutbr-my.sharepoint.com/:v:/g/personal/262725_vutbr_cz/IQAy4LJd8YUuS7vpXyxeKpHGAYxXahwq3z5qYVOWZC4B2e8?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=F2HpED)
 
-[poster](
+[poster](de_projekt_poster.jpg)
+
 ---
 
 ## Reference
